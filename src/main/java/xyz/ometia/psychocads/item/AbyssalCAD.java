@@ -1,35 +1,39 @@
 package xyz.ometia.psychocads.item;
 
 import net.minecraftforge.fml.common.Mod;
-import vazkii.psi.api.cad.*;
-import xyz.ometia.psychocads.PsychoCADs;
-import java.util.List;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.player.PlayerEntity;
+import vazkii.psi.api.cad.EnumCADStat;
+import vazkii.psi.api.cad.EnumCADComponent;
+
+import vazkii.psi.api.cad.ICADComponent;
+
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import vazkii.psi.api.PsiAPI;
+
 
 import static xyz.ometia.psychocads.PsychoCADs.MOD_ID;
 
 @Mod.EventBusSubscriber(modid = MOD_ID)
-public class abyssalCAD extends Item implements ICADComponent, ICADAssembly {
+public class AbyssalCAD extends Item implements ICADComponent{
+
+    public AbyssalCAD() {
+        super(new Properties().stacksTo(1));
+    }
+
+    private static final int ABYSSAL_CAD_EFFICIENCY = 100;
+    private static final int ABYSSAL_CAD_POTENCY = 640;
 
     @Override
     public EnumCADComponent getComponentType(ItemStack stack) {
         return EnumCADComponent.ASSEMBLY;
     }
 
+    @Override
+    public int getCADStatValue(ItemStack stack, EnumCADStat stat) {
+        if (stat == EnumCADStat.EFFICIENCY)
+            return ABYSSAL_CAD_EFFICIENCY;
+        if (stat == EnumCADStat.POTENCY)
+            return ABYSSAL_CAD_POTENCY;
+        return 0;
+    }
 
 }

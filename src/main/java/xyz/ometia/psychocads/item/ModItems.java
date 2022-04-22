@@ -2,7 +2,7 @@ package xyz.ometia.psychocads.item;
 
 
 import net.minecraft.item.Item;
-import net.minecraftforge.items.ItemStackHandler
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
