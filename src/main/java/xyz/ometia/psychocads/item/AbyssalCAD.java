@@ -1,5 +1,7 @@
 package xyz.ometia.psychocads.item;
 
+import net.minecraftforge.fml.common.Mod;
+import vazkii.psi.api.cad.*;
 import xyz.ometia.psychocads.PsychoCADs;
 import java.util.List;
 import net.minecraft.client.util.ITooltipFlag;
@@ -18,11 +20,16 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import vazkii.psi.api.PsiAPI;
-import vazkii.psi.api.cad.EnumCADComponent;
-import vazkii.psi.api.cad.EnumCADStat;
-import vazkii.psi.api.cad.ICAD;
-import vazkii.psi.api.cad.ICADComponent;
 
-@EventBusSubscriber
-public class abyssalCAD extends Item implements ICADComponent{
+import static xyz.ometia.psychocads.PsychoCADs.MOD_ID;
+
+@Mod.EventBusSubscriber(modid = MOD_ID)
+public class abyssalCAD extends Item implements ICADComponent, ICADAssembly {
+
+    @Override
+    public EnumCADComponent getComponentType(ItemStack stack) {
+        return EnumCADComponent.ASSEMBLY;
+    }
+
+
 }
